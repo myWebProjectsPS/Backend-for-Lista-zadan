@@ -18,8 +18,9 @@ db.once('open', function () {
 
 var app = express();
 app.use(cookieParser())
-app.listen(8080, () => {
-    console.log("server run on 8080")
+const port=process.env.PORT||5000;
+app.listen(port, () => {
+    console.log("server run on  ",port)
 })
 
 
