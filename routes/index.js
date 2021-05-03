@@ -87,9 +87,15 @@ router.post('/add', (req, res) => {
         console.log("Bład przy zapisie do bazy ",err)
         // const fileDir = path.join(__dirname, "../views/admin/newsForm.html");
         // res.sendFile(fileDir)
+		res.json({
+              err
+       })
         return
       } else {
-        res.redirect('/one');
+		  res.json({
+              task:"ok"
+       })
+        //res.redirect('/one');
         // const fileDir = path.join(__dirname, "../views/admin.html");
         // res.sendFile(fileDir)
       }
