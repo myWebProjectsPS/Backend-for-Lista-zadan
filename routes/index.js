@@ -57,7 +57,7 @@ router.post('/add', (req, res) => {
 
     let date=new Date();
     const body = {
-        title: "sport3", // String is shorthand for {type: String}
+        title: req.data.name, // String is shorthand for {type: String}
         description: "drążek",
         body: ip,
         id:Math.random(),
