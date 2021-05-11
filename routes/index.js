@@ -17,14 +17,23 @@ router.get('/', (req, res) => {
 
 })
 
+router.get('/ip', (req, res) => {
+  console.log(req.ip, req.ips);
+  res.json({
+    'ip': req.ip,
+    'ips': req.ips
+  })
+
+})
+
 
 router.get('/one/:id/:nr', (req, res) => {
-  console.log("one ",req.params.nr)
+  console.log("one ", req.ip)
   // const fileDir=path.join(
   //     __dirname,
   //     "../views/index.html");
   //     res.sendFile(fileDir)
-  Tasks1.find({ "title": req.params.id,"id": req.params.nr}, (err, data) => {
+  Tasks1.find({ "title": req.params.id, "id": req.params.nr }, (err, data) => {
     // console.log("param ",data)
     res.json({
       data
@@ -35,12 +44,12 @@ router.get('/one/:id/:nr', (req, res) => {
 })
 
 router.get('/all/:nr', (req, res) => {
-  console.log("all ",req.params.nr)
+  //console.log("all ip ",req.ip)
   // let ClientIP=req.params.nr
   // ClientIP.split("").reverse().join("")
   // //ClientIP.replaceAll("SO",".")
   // console.log("all2 ",ClientIP.replaceAll("SO","."))
-  Tasks1.find({"id":req.params.nr }, (err, data) => {
+  Tasks1.find({ "id": req.params.nr }, (err, data) => {
     // console.log("param ",data)
     res.json({
       data
@@ -117,7 +126,7 @@ router.patch('/update/:id', (req, res) => {
   //const ip=req.ip
   let ip = req.headers['x-forwarded-for']// || req.connection.remoteAddress;
   //ip = ip.toString().replace('::ffff:', '');
-  Tasks1.findOneAndUpdate({ "title": req.params.id,"id": req.body.id },
+  Tasks1.findOneAndUpdate({ "title": req.params.id, "id": req.body.id },
     //{"title":"zmiana"},
     {
       title: req.body.title, // String is shorthand for {type: String}
@@ -142,14 +151,14 @@ router.patch('/update/:id', (req, res) => {
 })
 
 router.get('/delete/:id/:nr', (req, res) => {
-  console.log("delete request body ",req.params.id)
+  console.log("delete request body ", req.params.id)
   // res.json({
   //         task: "remove"
   //      })
   //const ip=req.ip
- // let ip = req.headers['x-forwarded-for']// || req.connection.remoteAddress;
+  // let ip = req.headers['x-forwarded-for']// || req.connection.remoteAddress;
   //ip = ip.toString().replace('::ffff:', '');
-  Tasks1.findOneAndDelete({ "title": req.params.id,"id": req.params.nr},
+  Tasks1.findOneAndDelete({ "title": req.params.id, "id": req.params.nr },
     //{"title":"zmiana"},
     // {
 
@@ -163,5 +172,6 @@ router.get('/delete/:id/:nr', (req, res) => {
     })
 
 })
+
 
 module.exports = router;
