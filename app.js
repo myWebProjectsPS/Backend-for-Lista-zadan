@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 var cors = require('cors')
-const config=require('./config');
+const config = require('./config');
 var mongoose = require('mongoose');
 mongoose.connect(config.db, {
     useNewUrlParser: true,
@@ -20,9 +20,9 @@ db.once('open', function () {
 var app = express();
 app.use(cookieParser())
 app.use(cors())
-const port=process.env.PORT||5000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
-    console.log("server run on  ",port)
+    console.log("server run on  ", port)
 })
 
 
@@ -34,18 +34,5 @@ app.use(bodyParser.urlencoded({
 var indexRouter = require('./routes/index');
 
 app.use('/', indexRouter);
-
-// app.get("/",(req,res)=>{
-//     //res.send("ok")
-//     console.log("slash")
-//     res.json({
-//                 hello: 'world'
-//             })
-// })
-
-
-
-
-
 
 module.exports = app;

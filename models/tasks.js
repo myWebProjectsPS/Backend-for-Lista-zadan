@@ -1,4 +1,3 @@
-//import mongoose from 'mongoose';
 var mongoose = require('mongoose');
 const { Schema } = mongoose;
 
@@ -11,13 +10,8 @@ const TasksSchema = new Schema({
     deadline:String,
     fl:String,
     tags:[String],
-    //comments: [{ body: String, date: Date }],
     createdTime: { type: Date, default: Date.now },
-    //hidden: Boolean,
-    // meta: {
-    //     votes: Number,
-    //     favs: Number
-    // }
+   
 });
 
 module.exports = mongoose.model('Tasks1', TasksSchema)

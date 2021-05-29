@@ -1,4 +1,3 @@
-//import mongoose from 'mongoose';
 var mongoose = require('mongoose');
 const { Schema } = mongoose;
 
